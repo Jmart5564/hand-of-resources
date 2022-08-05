@@ -29,6 +29,21 @@ describe('bands routes', () => {
       band_members: 5 
     });
   });
+
+  it('#POST /bands should create a new band', async () => {
+    const newBand = {
+      name: 'Lowkey',
+      genre: 'Hip-Hop',
+      country: 'UK',
+      band_members: 1
+    };
+    const resp = await request(app).post('/bands').setEncoding(newBand);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newBand,
+    });
+  });
   afterAll(() => {
     pool.end();
   });
