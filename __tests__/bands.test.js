@@ -7,6 +7,7 @@ describe('bands routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
+
   it('#GET /bands should return a list of bands', async () => {
     const resp = await request(app).get('/bands');
     expect(resp.body.length).toEqual(5);
@@ -15,9 +16,7 @@ describe('bands routes', () => {
     );
     expect(lotus).toHaveProperty('genre', 'Jam Band');
     expect(lotus).toHaveProperty('country', 'USA');
-    expect(lotus).toHaveProperty('band_members', '3');
-
-    
+    expect(lotus).toHaveProperty('band_members', 5);
   });
   afterAll(() => {
     pool.end();

@@ -11,10 +11,10 @@ CREATE TABLE bands (
     name VARCHAR,
     genre VARCHAR,
     country VARCHAR,
-    band_memebers INT
+    band_members INT
 );
 
-INSERT INTO bands (name, genre, country, band_memebers) VALUES
+INSERT INTO bands (name, genre, country, band_members) VALUES
 ('Lotus', 'Jam Band', 'USA', 5),
 ('Gojira', 'Progressive Metal', 'France', 4),
 ('King Buffalo', 'Psychedelic Rock', 'USA', 3),
