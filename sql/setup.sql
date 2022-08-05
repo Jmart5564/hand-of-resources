@@ -1,7 +1,7 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS bands;
-DROP TABLE IF EXISTS mythological_creatures;
+DROP TABLE IF EXISTS cats;
 DROP TABLE IF EXISTS pokemon;
 DROP TABLE IF EXISTS beer;
 DROP TABLE IF EXISTS avatar_characters;
@@ -20,6 +20,23 @@ INSERT INTO bands (name, genre, country, band_memebers) VALUES
 ('King Buffalo', 'Psychedelic Rock', 'USA', 3),
 ('King Gizzard and the Lizard Wizard', 'Acid Rock', 'Australia', 6),
 ('All Them Witches', 'Stoner Rock', 'USA', 3);
+
+CREATE TABLE cats (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR,
+    color VARCHAR,
+    age INT,
+    owner VARCHAR
+);
+
+INSERT INTO cats (name, color, age, owner) VALUES
+('Momo', 'Black', 2, 'Colter'),
+('Ghoul', 'Black', 10, 'Jessica'),
+('Stu', 'White, Grey', 2, 'Colter'),
+('Ralph', 'Black, Grey, White', 1, 'Adam'),
+('Eddna', 'Grey', 2, 'Adam'),
+('Harry', 'Black, White', 6, 'Carolyn'),
+('Dino', 'Grey, Black', 1, 'Charlie');
 
 CREATE TABLE pokemon (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -62,4 +79,7 @@ CREATE TABLE avatar_characters (
 
 INSERT INTO avatar_characters (name, affiliation, is_bender, age) VALUES 
 ('Toph', 'Earth Kingdom', TRUE, 12),
-('Iroh' )
+('Zuko', 'Fire Nation', TRUE, 16),
+('Sokka', 'Water Tribe', FALSE, 15),
+('Katara', 'Water Tribe', TRUE, 14),
+('Suki', 'Earth Nation', FALSE, 15);
