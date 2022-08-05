@@ -14,6 +14,9 @@ describe('bands routes', () => {
       (bands) => bands.name === 'Lotus'
     );
     expect(lotus).toHaveProperty('genre', 'Jam Band');
+    expect(lotus).toHaveProperty('country', 'USA');
+    expect(lotus).toHaveProperty('band_members', '3');
+
     
   });
   afterAll(() => {
