@@ -18,6 +18,16 @@ describe('bands routes', () => {
     expect(lotus).toHaveProperty('country', 'USA');
     expect(lotus).toHaveProperty('band_members', 5);
   });
+
+  it('#GET /bands/1 should return a single band with detail', async () => {
+    const resp = await request(app).get('/bands/1');
+    expect(resp.body).toEqual({ 
+      name: 'Lotus',
+      genre: 'Jam Band',
+      country: 'USA',
+      band_members: 5 
+    });
+  });
   afterAll(() => {
     pool.end();
   });
