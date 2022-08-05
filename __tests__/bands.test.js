@@ -53,6 +53,14 @@ describe('bands routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.country).toBe('United States');
   });
+
+  it('#DELETE /bands/:id should delete a band', async () => {
+    const resp = await request(app).delete('/bands/1');
+    expect(resp.status).toBe(200);
+
+    const bandResp = await request(app).get('/bands/1');
+    expect(bandResp.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
