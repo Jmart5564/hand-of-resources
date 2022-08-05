@@ -37,7 +37,7 @@ describe('bands routes', () => {
       country: 'UK',
       band_members: 1
     };
-    const resp = await request(app).post('/bands').setEncoding(newBand);
+    const resp = await request(app).post('/bands').send(newBand);
     expect(resp.status).toBe(200);
     expect(resp.body).toEqual({
       id: expect.any(String),
