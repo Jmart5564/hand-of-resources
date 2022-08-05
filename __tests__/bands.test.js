@@ -44,6 +44,15 @@ describe('bands routes', () => {
       ...newBand,
     });
   });
+
+  it('#PUT /bands/:id should update an existing band', async () => {
+    const resp = await request(app).put('/bands/1').send({
+      country: 'United States',
+    });
+    console.log(resp.body);
+    expect(resp.status).toBe(200);
+    expect(resp.body.country).toBe('United States');
+  });
   afterAll(() => {
     pool.end();
   });
