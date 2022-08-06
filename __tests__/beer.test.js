@@ -44,6 +44,14 @@ describe('beer routes', () => {
       ...newBeer,
     });
   });
+  it('#PUT /beer/:id should update an existing beer', async () => {
+    const resp = await request(app).put('/beer/1').send({
+      type: 'Pilsner',
+    });
+    console.log(resp.body);
+    expect(resp.status).toBe(200);
+    expect(resp.body.type).toBe('Pilsner');
+  });
   afterAll(() => {
     pool.end();
   });
