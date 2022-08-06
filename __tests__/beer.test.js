@@ -29,6 +29,21 @@ describe('beer routes', () => {
       abv: '4.9%'
     });
   });
+
+  it('#POST /beer should create a new beer', async () => {
+    const newBeer = {
+      name: 'PBR',
+      brewery: 'Pabst',
+      type: 'Lager',
+      abv: '5%'
+    };
+    const resp = await request(app).post('/beer').send(newBeer);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newBeer,
+    });
+  });
   afterAll(() => {
     pool.end();
   });
