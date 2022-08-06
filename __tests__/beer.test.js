@@ -52,6 +52,13 @@ describe('beer routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.type).toBe('Pilsner');
   });
+  it('#DELETE /beer/:id should delete a band', async () => {
+    const resp = await request(app).delete('/beer/1');
+    expect(resp.status).toBe(200);
+
+    const beerResp = await request(app).get('/beer/1');
+    expect(beerResp.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
