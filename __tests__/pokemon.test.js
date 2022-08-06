@@ -41,6 +41,15 @@ describe('pokemon routes', () => {
       ...newPokemon,
     });
   });
+
+  it('#PUT /pokemon/:id should update an existing pokemon', async () => {
+    const resp = await request(app).put('/pokemon/1').send({
+      type: 'Psychic, Normal',
+    });
+    console.log(resp.body);
+    expect(resp.status).toBe(200);
+    expect(resp.body.type).toBe('Psychic, Normal');
+  });
   afterAll(() => {
     pool.end();
   });
