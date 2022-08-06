@@ -28,6 +28,20 @@ describe('cats routes', () => {
       owner: 'Colter' 
     });
   });
+  it('#POST /cats should create a new cat', async () => {
+    const newCat = {
+      name: 'Tobi',
+      color: 'Black, White',
+      age: 5,
+      owner: 'Carolyn'
+    };
+    const resp = await request(app).post('/cats').send(newCat);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newCat,
+    });
+  });
   afterAll(() => {
     pool.end();
   });
