@@ -24,7 +24,21 @@ describe('pokemon routes', () => {
       id: '1',
       name: 'Kadabra',
       pokedex_number: 64,
-      type: 'Psychic',
+      type: 'Psychic'
+    });
+  });
+
+  it('#POST /pokemon should create a new pokemon', async () => {
+    const newPokemon = {
+      name: 'Bulbasaur',
+      pokedex_number: 1,
+      type: 'Grass'
+    };
+    const resp = await request(app).post('/pokemon').send(newPokemon);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newPokemon,
     });
   });
   afterAll(() => {
