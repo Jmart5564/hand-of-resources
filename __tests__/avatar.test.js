@@ -18,6 +18,16 @@ describe('avatar routes', () => {
     expect(toph).toHaveProperty('is_bender', true);
     expect(toph).toHaveProperty('age', 12);
   });
+  it('#GET /avatar/1 should return a single avatar with detail', async () => {
+    const resp = await request(app).get('/avatar/1');
+    expect(resp.body).toEqual({ 
+      id: '1',
+      name: 'Toph',
+      affiliation: 'Earth Kingdom',
+      is_bender: true,
+      age: 12 
+    });
+  });
   afterAll(() => {
     pool.end();
   });
