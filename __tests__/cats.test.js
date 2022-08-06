@@ -50,6 +50,13 @@ describe('cats routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.name).toBe('Moomo');
   });
+  it('#DELETE /cats/:id should delete a band', async () => {
+    const resp = await request(app).delete('/cats/1');
+    expect(resp.status).toBe(200);
+
+    const bandResp = await request(app).get('/cats/1');
+    expect(bandResp.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
