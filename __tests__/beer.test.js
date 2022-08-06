@@ -18,6 +18,17 @@ describe('beer routes', () => {
     expect(goat).toHaveProperty('type', 'Saison');
     expect(goat).toHaveProperty('abv', '4.9%');
   });
+
+  it('#GET /beer/1 should return a single beer with detail', async () => {
+    const resp = await request(app).get('/beer/1');
+    expect(resp.body).toEqual({ 
+      id: '1',
+      name: 'The Goat',
+      brewery: 'Holy Mountain',
+      type: 'Saison',
+      abv: '4.9%'
+    });
+  });
   afterAll(() => {
     pool.end();
   });
