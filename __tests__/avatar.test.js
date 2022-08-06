@@ -50,6 +50,13 @@ describe('avatar routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.age).toBe(23);
   });
+  it('#DELETE /avatar/:id should delete a band', async () => {
+    const resp = await request(app).delete('/avatar/1');
+    expect(resp.status).toBe(200);
+
+    const bandResp = await request(app).get('/avatar/1');
+    expect(bandResp.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
