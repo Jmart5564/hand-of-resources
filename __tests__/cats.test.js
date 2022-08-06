@@ -42,6 +42,14 @@ describe('cats routes', () => {
       ...newCat,
     });
   });
+  it('#PUT /cats/:id should update an existing cat', async () => {
+    const resp = await request(app).put('/cats/1').send({
+      name: 'Moomo',
+    });
+    console.log(resp.body);
+    expect(resp.status).toBe(200);
+    expect(resp.body.country).toBe('Moomo');
+  });
   afterAll(() => {
     pool.end();
   });
