@@ -28,6 +28,20 @@ describe('avatar routes', () => {
       age: 12 
     });
   });
+  it('#POST /avatar should create a new avatar', async () => {
+    const newAvatar = {
+      name: 'Iroh',
+      affiliation: 'Fire Nation',
+      is_bender: false,
+      age: 98
+    };
+    const resp = await request(app).post('/avatar').send(newAvatar);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newAvatar,
+    });
+  });
   afterAll(() => {
     pool.end();
   });
