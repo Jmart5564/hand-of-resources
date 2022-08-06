@@ -48,7 +48,7 @@ describe('cats routes', () => {
     });
     console.log(resp.body);
     expect(resp.status).toBe(200);
-    expect(resp.body.country).toBe('Moomo');
+    expect(resp.body.name).toBe('Moomo');
   });
   afterAll(() => {
     pool.end();
