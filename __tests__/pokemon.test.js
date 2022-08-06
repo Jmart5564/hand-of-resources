@@ -50,6 +50,13 @@ describe('pokemon routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.type).toBe('Psychic, Normal');
   });
+  it('#DELETE /pokemon/:id should delete a band', async () => {
+    const resp = await request(app).delete('/pokemon/1');
+    expect(resp.status).toBe(200);
+
+    const bandResp = await request(app).get('/pokemon/1');
+    expect(bandResp.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
