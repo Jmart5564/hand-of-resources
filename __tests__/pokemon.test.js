@@ -15,7 +15,7 @@ describe('pokemon routes', () => {
       (pokemon) => pokemon.name === 'Kadabra'
     );
     expect(kadabra).toHaveProperty('pokedex_number', 64);
-    expect(kadabra).toHaveProperty('Type', 'Psychic');
+    expect(kadabra).toHaveProperty('type', 'Psychic');
   });
   afterAll(() => {
     pool.end();
