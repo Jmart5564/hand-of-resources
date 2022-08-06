@@ -42,6 +42,14 @@ describe('avatar routes', () => {
       ...newAvatar,
     });
   });
+  it('#PUT /avatar/:id should update an existing avatar', async () => {
+    const resp = await request(app).put('/avatar/1').send({
+      age: 23,
+    });
+    console.log(resp.body);
+    expect(resp.status).toBe(200);
+    expect(resp.body.age).toBe(23);
+  });
   afterAll(() => {
     pool.end();
   });
